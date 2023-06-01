@@ -30,10 +30,8 @@ public class RegistrationFormTests {
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("6102458201");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $("#dateOfBirth-wrapper").$(byText("June")).click();
-        $(".react-datepicker__year-select").click();
-        $("#dateOfBirth-wrapper").$(byText("1987")).click();
+        $(".react-datepicker__month-select").selectOption("June");
+        $(".react-datepicker__year-select").selectOption("1987");
         $("div.react-datepicker__day--001").click();
         $("#subjectsInput").setValue("c");
         $("#subjectsInput").setValue("Computer Science").pressEnter();
