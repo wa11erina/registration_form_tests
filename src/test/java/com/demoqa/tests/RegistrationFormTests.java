@@ -4,10 +4,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -18,6 +16,8 @@ public class RegistrationFormTests {
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
+        Configuration.holdBrowserOpen = true;
+
     }
 
     @Test
@@ -27,39 +27,40 @@ public class RegistrationFormTests {
         $("#firstName").setValue("Robert");
         $("#lastName").setValue("Porter");
         $("#userEmail").setValue("prot@kpax.com");
-        $("[for=gender-radio-1]").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("6102458201");
         $("#dateOfBirthInput").click();
-        $(byText("June")).click();
-        $(byText("1987")).click();
+        $(".react-datepicker__month-select").click();
+        $("#dateOfBirth-wrapper").$(byText("June")).click();
+        $(".react-datepicker__year-select").click();
+        $("#dateOfBirth-wrapper").$(byText("1987")).click();
         $("div.react-datepicker__day--001").click();
+        $("#subjectsInput").setValue("c");
         $("#subjectsInput").setValue("Computer Science").pressEnter();
         $("[for=hobbies-checkbox-2]").click();
         $("[for=hobbies-checkbox-3]").click();
-        $("#uploadPicture").uploadFile(new File("D:\\Pictures\\Different\\prot.jpg"));
+        $("#uploadPicture").uploadFromClasspath("prot.jpg");
         $("#currentAddress").setValue("K-PAX, Lyra constellation");
-        $("#state").click();
-        $(byText("NCR")).click();
-        $("#city").click();
+        $("#stateCity-wrapper").$("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#stateCity-wrapper").click();
+        $(byText("Select City")).click();
         $(byText("Delhi")).click();
         $("#submit").click();
 
 
 
-        $("#firstName").shouldHave(value("Robert"));
-        $("#lastName").shouldHave(value("Porter"));
-        $("#userEmail").shouldHave(value("prot@kpax.com"));
-        $("[for=gender-radio-1]").shouldHave(text("Male"));
-        $("#userNumber").shouldHave(value("6102458201"));
-        $("#dateOfBirthInput").shouldHave(value("01 Jun 1987"));
-        $("#subjectsContainer").shouldHave(text("Computer Science"));
-        $("[for=hobbies-checkbox-2]").shouldHave(text("Reading"));
-        $("[for=hobbies-checkbox-3]").shouldHave(text("Music"));
-        $("#currentAddress").shouldHave(value("K-PAX, Lyra constellation"));
-        $("#state").shouldHave(text("NCR"));
-        $("#city").shouldHave(text("Delhi"));
         $(".modal-content").shouldHave(text("Thanks for submitting the form"));
-
+        $(".table-responsive").shouldHave(text("Robert Porter"));
+        $(".table-responsive").shouldHave(text("prot@kpax.com"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("6102458201"));
+        $(".table-responsive").shouldHave(text("01 June,1987"));
+        $(".table-responsive").shouldHave(text("Computer Science"));
+        $(".table-responsive").shouldHave(text("Reading, Music"));
+        $(".table-responsive").shouldHave(text("prot.jpg"));
+        $(".table-responsive").shouldHave(text("K-PAX, Lyra constellation"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
 
     }
 
