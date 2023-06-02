@@ -35,13 +35,12 @@ public class RegistrationFormTests {
         $("div.react-datepicker__day--001").click();
         $("#subjectsInput").setValue("c");
         $("#subjectsInput").setValue("Computer Science").pressEnter();
-        $("[for=hobbies-checkbox-2]").click();
-        $("[for=hobbies-checkbox-3]").click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("prot.jpg");
         $("#currentAddress").setValue("K-PAX, Lyra constellation");
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#stateCity-wrapper").click();
         $(byText("Select City")).click();
         $(byText("Delhi")).click();
         $("#submit").click();
