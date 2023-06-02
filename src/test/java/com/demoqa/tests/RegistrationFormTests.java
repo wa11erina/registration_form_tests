@@ -41,8 +41,8 @@ public class RegistrationFormTests {
         $("#currentAddress").setValue("K-PAX, Lyra constellation");
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
-        $(byText("Select City")).click();
-        $(byText("Delhi")).click();
+        $("#stateCity-wrapper").$("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
 
