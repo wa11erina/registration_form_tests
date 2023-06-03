@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,6 +24,7 @@ public class RegistrationFormTests {
     @Test
     void successTest() {
         open("https://demoqa.com/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         $("#firstName").setValue("Robert");
         $("#lastName").setValue("Porter");
@@ -32,7 +34,7 @@ public class RegistrationFormTests {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("June");
         $(".react-datepicker__year-select").selectOption("1987");
-        $("div.react-datepicker__day--001").click();
+        $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
         $("#subjectsInput").setValue("c");
         $("#subjectsInput").setValue("Computer Science").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
@@ -46,7 +48,7 @@ public class RegistrationFormTests {
         $("#submit").click();
 
 
-
+        $(".modal-content").should(appear);
         $(".modal-content").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Robert Porter"));
         $(".table-responsive").shouldHave(text("prot@kpax.com"));
