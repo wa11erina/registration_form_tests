@@ -8,29 +8,23 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class RegistrationFormTests {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-
-    }
+public class RegistrationFormTests extends TestBase{
 
     @Test
-    void successTest() {
+    void successfulRegistrationTest() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         $("#firstName").setValue("Robert");
         $("#lastName").setValue("Porter");
         $("#userEmail").setValue("prot@kpax.com");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("6102458201");
+        $("#userNumber").setValue("1234567890");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("June");
         $(".react-datepicker__year-select").selectOption("1987");
@@ -39,7 +33,7 @@ public class RegistrationFormTests {
         $("#subjectsInput").setValue("Computer Science").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("prot.jpg");
+        $("#uploadPicture").uploadFromClasspath("img/prot.jpg");
         $("#currentAddress").setValue("K-PAX, Lyra constellation");
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
@@ -48,18 +42,12 @@ public class RegistrationFormTests {
         $("#submit").click();
 
 
-        $(".modal-content").should(appear);
-        $(".modal-content").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Robert Porter"));
-        $(".table-responsive").shouldHave(text("prot@kpax.com"));
-        $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("6102458201"));
-        $(".table-responsive").shouldHave(text("01 June,1987"));
-        $(".table-responsive").shouldHave(text("Computer Science"));
-        $(".table-responsive").shouldHave(text("Reading, Music"));
-        $(".table-responsive").shouldHave(text("prot.jpg"));
-        $(".table-responsive").shouldHave(text("K-PAX, Lyra constellation"));
-        $(".table-responsive").shouldHave(text("NCR Delhi"));
+        $(".modal-content").should(appear)
+                                    .shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Robert Porter"), text("prot@kpax.com"),
+                text("Male"), text("1234567890"), text("01 June,1987"),
+                text("Computer Science"), text("Reading, Music"), text("prot.jpg"),
+                text("K-PAX, Lyra constellation"), text("NCR Delhi"));
 
     }
 
