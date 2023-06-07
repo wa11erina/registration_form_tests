@@ -43,12 +43,12 @@ public class RegistrationFormTests extends TestBase{
 
 
         $(".modal-content").should(appear)
-                                    .shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Robert Porter"), text("prot@kpax.com"),
-                text("Male"), text("1234567890"), text("01 June,1987"),
-                text("Computer Science"), text("Reading, Music"), text("prot.jpg"),
+                .shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Robert Porter"),
+                text("prot@kpax.com"), text("Male"), text("1234567890"),
+                text("01 June,1987"), text("Computer Science"),
+                text("Reading, Music"), text("prot.jpg"),
                 text("K-PAX, Lyra constellation"), text("NCR Delhi"));
 
     }
-
 }
