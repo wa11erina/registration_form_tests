@@ -16,8 +16,9 @@ public class RegistrationFormPageObjectsTests extends TestBase{
     
     @Test
     void successfulRegistrationTest() {
-
+        // Filling out Registration Form
         registrationPage.openPage()
+                        .closeAds()
                         .setFirstName("Robert")
                         .setLastName("Porter")
                         .setEmail("prot@kpax.com")
@@ -31,10 +32,10 @@ public class RegistrationFormPageObjectsTests extends TestBase{
                         .setCurrentAddress("K-PAX, Lyra constellation")
                         .setUserState("NCR")
                         .setUserCity("Delhi")
-                        .pushSubmitButton();
-
-         registrationPage
-                        .verifyResults("Student Name", "Robert Porter")
+                        .pushSubmitButton()
+                        .checkCompletedForm();
+        // Verifying values
+        registrationPage.verifyResults("Student Name", "Robert Porter")
                         .verifyResults("Student Email", "prot@kpax.com")
                         .verifyResults("Gender", "Male")
                         .verifyResults("Mobile", "1234567890")

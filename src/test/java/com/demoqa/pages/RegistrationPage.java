@@ -33,6 +33,10 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
+        return this;
+    }
+    public RegistrationPage closeAds() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -107,9 +111,13 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage verifyResults(String key, String value) {
+    public RegistrationPage checkCompletedForm() {
         completedForm.should(appear);
         completedForm.shouldHave(text("Thanks for submitting the form"));
+
+        return this;
+    }
+    public RegistrationPage verifyResults(String key, String value) {
         verifyResultsComponent.verifyTableResults(key, value);
 
         return this;
