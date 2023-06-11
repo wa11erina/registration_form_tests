@@ -31,7 +31,7 @@ public class RegistrationWithTestDataTests extends TestBase{
         $(".react-datepicker__year-select").selectOption(userBirthYear);
         $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
         $("#subjectsInput").setValue(subjectFirstLetter);
-        $("#subjectsInput").setValue(subjectChosen).pressEnter();
+        $("#subjectsInput").setValue(userSubject).pressEnter();
         $("#hobbiesWrapper").$(byText(hobby2)).click();
         $("#hobbiesWrapper").$(byText(hobby3)).click();
         $("#uploadPicture").uploadFromClasspath(userImg);
@@ -47,7 +47,7 @@ public class RegistrationWithTestDataTests extends TestBase{
                 .shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(firstName + " " + lastName),
                 text(userEmail), text(userGender1), text(userPhoneNumber),
-                text(userBirthDay + " " + userBirthMonth + "," + userBirthYear), text(subjectChosen),
+                text(userBirthDay + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
                 text(hobby2 + "," + " " + hobby3), text(imgTitle),
                 text(currentAddress), text(userState + " " + userCity));
 

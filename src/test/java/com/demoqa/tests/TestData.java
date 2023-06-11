@@ -12,7 +12,7 @@ public class TestData {
                         userBirthYear = "1987",
                         userBirthDay = "01",
                         subjectFirstLetter = "c",
-                        subjectChosen = "Computer Science",
+                        userSubject = "Computer Science",
                         hobby1 = "Sports",
                         hobby2 = "Reading",
                         hobby3 = "Music",

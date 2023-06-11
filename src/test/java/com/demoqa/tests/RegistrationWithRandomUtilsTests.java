@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.demoqa.utils.RandomUtils.getRandomEmail;
-import static com.demoqa.utils.RandomUtils.getRandomString;
+import static com.demoqa.utils.RandomUtils.*;
 
 
 public class RegistrationWithRandomUtilsTests extends TestBase{
@@ -19,14 +18,15 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
         String firstName = getRandomString(10),
                 lastName = getRandomString(10),
                 userEmail = getRandomEmail(),
-                userGender = "Male",
-                userPhoneNumber = "1234567890",
-                userBirthMonth = "June",
-                userBirthYear = "1987",
-                subjectFirstLetter = "c",
-                subjectChosen = "Computer Science",
-                currentAddress = "K-PAX, Lyra constellation";
-
+                userGender = getRandomGender(),
+                userPhoneNumber = getRandomSimplePhone(),
+                userBirthMonth = getRandomMonth(),
+                userBirthYear = String.valueOf(getRandomInt(1900, 2023)),
+                userSubject = getRandomSubject(),
+                userHobby = getRandomHobby(),
+                currentAddress = getRandomStringWithNumbersAndSpaces(30),
+                userState = getRandomUserState(),
+                userCity = getRandomUserCity();
 
 
         open("https://demoqa.com/automation-practice-form");
@@ -43,16 +43,14 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
         $(".react-datepicker__month-select").selectOption(userBirthMonth);
         $(".react-datepicker__year-select").selectOption(userBirthYear);
         $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
-        $("#subjectsInput").setValue(subjectFirstLetter);
-        $("#subjectsInput").setValue(subjectChosen).pressEnter();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#hobbiesWrapper").$(byText("Music")).click();
+        $("#subjectsInput").setValue(userSubject).pressEnter();
+        $("#hobbiesWrapper").$(byText(userHobby)).click();
         $("#uploadPicture").uploadFromClasspath("img/prot.jpg");
         $("#currentAddress").setValue(currentAddress);
         $("#stateCity-wrapper").$("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText(userState)).click();
         $("#stateCity-wrapper").$("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
+        $("#stateCity-wrapper").$(byText(userCity)).click();
         $("#submit").click();
 
 
@@ -60,9 +58,9 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
                 .shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(firstName + " " + lastName),
                 text(userEmail), text(userGender), text(userPhoneNumber),
-                text("01" + " " + userBirthMonth + "," + userBirthYear), text(subjectChosen),
-                text("Reading, Music"), text("prot.jpg"),
-                text(currentAddress), text("NCR Delhi"));
+                text("01" + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
+                text(userHobby), text("prot.jpg"),
+                text(currentAddress), text(userState + " " + userCity));
 
+        }
     }
-}
