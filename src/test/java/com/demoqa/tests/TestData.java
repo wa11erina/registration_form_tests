@@ -2,13 +2,23 @@ package com.demoqa.tests;
 
 public class TestData {
     public static String firstName = "Robert",
-    lastName = "Porter",
-    userEmail = "prot@kpax.com",
-    userGender = "Male",
-    userPhoneNumber = "1234567890",
-    userBirthMonth = "June",
-    userBirthYear = "1987",
-    subjectFirstLetter = "c",
-    subjectChosen = "Computer Science",
-    currentAddress = "K-PAX, Lyra constellation";
+                        lastName = "Porter",
+                        userEmail = "prot@kpax.com",
+                        userGender1 = "Male",
+                        userGender2 = "Female",
+                        userGender3 = "Other",
+                        userPhoneNumber = "1234567890",
+                        userBirthMonth = "June",
+                        userBirthYear = "1987",
+                        userBirthDay = "01",
+                        subjectFirstLetter = "c",
+                        subjectChosen = "Computer Science",
+                        hobby1 = "Sports",
+                        hobby2 = "Reading",
+                        hobby3 = "Music",
+                        userImg = "img/prot.jpg",
+                        imgTitle = "prot.jpg",
+                        currentAddress = "K-PAX, Lyra constellation",
+                        userState = "NCR",
+                        userCity = "Delhi";
 }
