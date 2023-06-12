@@ -16,6 +16,7 @@ public class RegistrationFormPageObjectsTests extends TestBase{
     
     @Test
     void successfulRegistrationTest() {
+
         // Filling out Registration Form
         registrationPage.openPage()
                         .closeAds()
@@ -25,7 +26,7 @@ public class RegistrationFormPageObjectsTests extends TestBase{
                         .setGender("Male")
                         .setUserNumber("1234567890")
                         .setBirthdate("1", "June", "1987")
-                        .setUserSubjects("c", "Computer Science")
+                        .setUserSubjects("Computer Science")
                         .setHobbies("Reading")
                         .setHobbies("Music")
                         .uploadPicture("img/prot.jpg")

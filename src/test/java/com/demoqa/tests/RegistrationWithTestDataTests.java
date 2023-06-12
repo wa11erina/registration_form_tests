@@ -35,7 +35,7 @@ public class RegistrationWithTestDataTests extends TestBase{
         $("#hobbiesWrapper").$(byText(hobby2)).click();
         $("#hobbiesWrapper").$(byText(hobby3)).click();
         $("#uploadPicture").uploadFromClasspath(userImg);
-        $("#currentAddress").setValue(currentAddress);
+        $("#currentAddress").setValue(userCurrentAddress);
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText(userState)).click();
         $("#stateCity-wrapper").$("#city").click();
@@ -49,7 +49,7 @@ public class RegistrationWithTestDataTests extends TestBase{
                 text(userEmail), text(userGender1), text(userPhoneNumber),
                 text(userBirthDay + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
                 text(hobby2 + "," + " " + hobby3), text(imgTitle),
-                text(currentAddress), text(userState + " " + userCity));
+                text(userCurrentAddress), text(userState + " " + userCity));
 
     }
 }

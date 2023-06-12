@@ -1,6 +1,5 @@
 package com.demoqa.utils;
 
-import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 
 import java.security.SecureRandom;
@@ -11,22 +10,22 @@ public class RandomUtils {
 
      public static void main(String[] args) {
         System.out.println(getRandomString(10));
+        System.out.println(getRandomFakerFirstName());
+        System.out.println(getRandomFakerLastName());
         System.out.println(getRandomEmail());
+        System.out.println(getRandomFakerEmail());
         System.out.println(getRandomGender());
         System.out.println(getRandomSimplePhone());
+        System.out.println(getRandomFakerPhone());
         System.out.println(getRandomMonth());
         System.out.println(getRandomInt(1900, 2023));
         System.out.println(getRandomSubject());
         System.out.println(getRandomHobby());
         System.out.println(getRandomStringWithNumbersAndSpaces(20));
+        System.out.println(getRandomFakerAddress());
         System.out.println(getRandomUserState());
-        System.out.println(getRandomNCRCities());
-        System.out.println(getRandomUttarPradeshCities());
-        System.out.println(getRandomHaryanaCities());
-        System.out.println(getRandomRajasthanCities());
-         System.out.println(getRandomUserCity());
+        System.out.println(getRandomUserCity("NCR"));
         System.out.println(getRandomUuid());
-        System.out.println(getRandomFirstName());
 
     }
 
@@ -50,9 +49,24 @@ public class RandomUtils {
         return sb.toString();
     }
 
+    public static String getRandomFakerFirstName() {
+
+        return new Faker().name().firstName();
+    }
+
+    public static String getRandomFakerLastName() {
+
+        return new Faker().name().lastName();
+    }
+
     public static String getRandomEmail() {
 
          return getRandomString(10) + "@gmail.com";
+    }
+
+    public static String getRandomFakerEmail() {
+
+        return new Faker().internet().emailAddress();
     }
 
     private static String getRandomValueFromDataset(String[] values) {
@@ -83,6 +97,11 @@ public class RandomUtils {
                     getRandomInt(0, 9), getRandomInt(0, 9));
     }
 
+    public static String getRandomFakerPhone() {
+
+         return new Faker().phoneNumber().subscriberNumber(10);
+    }
+
     public static String getRandomMonth() {
         String[] months = {"January", "February", "March", "April",
                 "May", "June", "July", "August",
@@ -102,45 +121,57 @@ public class RandomUtils {
         return getRandomValueFromDataset(hobbies);
     }
 
+    public static String getRandomFakerAddress() {
+        return new Faker().address().fullAddress();
+    }
+
     public static String getRandomUserState() {
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
         return getRandomValueFromDataset(states);
-    }
+     }
 
-    public static String getRandomNCRCities() {
-        String[] ncrCities = {"Delhi", "Gurgaon", "Noida"};
-        return getRandomValueFromDataset(ncrCities);
-    }
-
-    public static String getRandomUttarPradeshCities() {
-        String[] uttarpradeshCities = {"Agra", "Lucknow", "Merrut"};
-        return getRandomValueFromDataset(uttarpradeshCities);
-    }
-
-    public static String getRandomHaryanaCities() {
-        String[] haryanaCities = {"Karnal", "Panipat"};
-        return getRandomValueFromDataset(haryanaCities);
-    }
-
-    public static String getRandomRajasthanCities() {
-        String[] rajasthancities = {"Jaipur", "Jaiselmer"};
-        return getRandomValueFromDataset(rajasthancities);
-    }
-
-    public static String getRandomUserCity() {
-        if (getRandomUserState().equals("NCR")) {
-            return getRandomNCRCities();
+    public static String getRandomUserCity(String userState) {
+        if (userState.equals("NCR")) {
+            String[] ncrCities = {"Delhi", "Gurgaon", "Noida"};
+            return getRandomValueFromDataset(ncrCities);
         }
-        else if (getRandomUserState().equals("Uttar Pradesh")) {
-            return getRandomUttarPradeshCities();
+        else if (userState.equals("Uttar Pradesh")) {
+            String[] uttarpradeshCities = {"Agra", "Lucknow", "Merrut"};
+            return getRandomValueFromDataset(uttarpradeshCities);
         }
-        else if (getRandomUserState().equals("Haryana")) {
-            return getRandomHaryanaCities();
+        else if (userState.equals("Haryana")) {
+            String[] haryanaCities = {"Karnal", "Panipat"};
+            return getRandomValueFromDataset(haryanaCities);
+
         }
-        else {
-            return getRandomRajasthanCities();
+        else if (userState.equals("Rajasthan")) {
+            String[] rajasthancities = {"Jaipur", "Jaiselmer"};
+            return getRandomValueFromDataset(rajasthancities);
         }
+        return null;
     }
+
+
+    public static String getRandomFakerCity(String state) {
+        if (state.equals("NCR")) {
+            String[] ncrCities = {"Delhi", "Gurgaon", "Noida"};
+            return new Faker().options().option(ncrCities);
+        }
+        else if (state.equals("Uttar Pradesh")) {
+            String[] uttarpradeshCities = {"Agra", "Lucknow", "Merrut"};
+            return new Faker().options().option(uttarpradeshCities);
+        }
+        else if (state.equals("Haryana")) {
+            String[] haryanaCities = {"Karnal", "Panipat"};
+            return new Faker().options().option(haryanaCities);
+        }
+        else if (state.equals("Rajasthan")) {
+            String[] rajasthancities = {"Jaipur", "Jaiselmer"};
+            return new Faker().options().option(rajasthancities);
+        }
+        return null;
+    }
+
 
 
     public static String getRandomUuid() {
@@ -148,10 +179,7 @@ public class RandomUtils {
          return UUID.randomUUID().toString();
     }
 
-    public static String getRandomFirstName() {
 
-         return new Faker().name().firstName();
-    }
 
 }
 

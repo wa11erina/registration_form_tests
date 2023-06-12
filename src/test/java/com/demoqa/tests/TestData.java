@@ -18,7 +18,7 @@ public class TestData {
                         hobby3 = "Music",
                         userImg = "img/prot.jpg",
                         imgTitle = "prot.jpg",
-                        currentAddress = "K-PAX, Lyra constellation",
+                        userCurrentAddress = "K-PAX, Lyra constellation",
                         userState = "NCR",
                         userCity = "Delhi";
 }
