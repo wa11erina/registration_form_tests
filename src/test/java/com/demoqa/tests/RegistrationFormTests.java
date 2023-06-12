@@ -1,7 +1,5 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
@@ -33,7 +31,7 @@ public class RegistrationFormTests extends TestBase{
         $("#subjectsInput").setValue("Computer Science").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("img/prot.jpg");
+        $("#uploadPicture").uploadFromClasspath("prot.jpg");
         $("#currentAddress").setValue("K-PAX, Lyra constellation");
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();

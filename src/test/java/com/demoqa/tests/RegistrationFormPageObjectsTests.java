@@ -1,13 +1,8 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -25,11 +20,11 @@ public class RegistrationFormPageObjectsTests extends TestBase{
                         .setEmail("prot@kpax.com")
                         .setGender("Male")
                         .setUserNumber("1234567890")
-                        .setBirthdate("1", "June", "1987")
+                        .setBirthdate("01", "June", "1987")
                         .setUserSubjects("Computer Science")
                         .setHobbies("Reading")
                         .setHobbies("Music")
-                        .uploadPicture("img/prot.jpg")
+                        .uploadPicture("prot.jpg")
                         .setCurrentAddress("K-PAX, Lyra constellation")
                         .setUserState("NCR")
                         .setUserCity("Delhi")

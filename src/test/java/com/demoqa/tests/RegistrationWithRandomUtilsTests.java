@@ -45,7 +45,7 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
         $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
         $("#subjectsInput").setValue(userSubject).pressEnter();
         $("#hobbiesWrapper").$(byText(userHobby)).click();
-        $("#uploadPicture").uploadFromClasspath("img/prot.jpg");
+        $("#uploadPicture").uploadFromClasspath("prot.jpg");
         $("#currentAddress").setValue(userCurrentAddress);
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText(userState)).click();

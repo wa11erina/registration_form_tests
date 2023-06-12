@@ -16,7 +16,7 @@ public class TestData {
                         hobby1 = "Sports",
                         hobby2 = "Reading",
                         hobby3 = "Music",
-                        userImg = "img/prot.jpg",
+                        userImg = "prot.jpg",
                         imgTitle = "prot.jpg",
                         userCurrentAddress = "K-PAX, Lyra constellation",
                         userState = "NCR",

@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
 import static com.demoqa.utils.RandomUtils.*;
@@ -15,15 +16,17 @@ public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
         String userFirstName = faker.name().firstName(),
                 userLastName = faker.name().lastName(),
                 userEmail = faker.internet().emailAddress(),
-                userGender = getRandomGender(),
+                userGender = getRandomFakerGender(),
                 userPhone = faker.phoneNumber().subscriberNumber(10),
-                userBirthMonth = getRandomMonth(),
+                userBirthMonth = getRandomFakerMonth(),
                 userBirthYear = String.valueOf(getRandomInt(1900, 2023)),
-                userSubject = getRandomSubject(),
-                userHobby = getRandomHobby(),
+                userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
+                userSubject = getRandomFakerSubject(),
+                userHobby = getRandomFakerHobby(),
+                userPicture = "prot.jpg",
                 userCurrentAddress = faker.address().fullAddress(),
-                userState = getRandomUserState(),
-                userCity = getRandomUserCity(userState);
+                userState = getRandomFakerUserState(),
+                userCity = getRandomFakerUserCity(userState);
 
         // Filling out Registration Form
         registrationPage.openPage()
@@ -33,10 +36,10 @@ public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
                         .setEmail(userEmail)
                         .setGender(userGender)
                         .setUserNumber(userPhone)
-                        .setBirthdate("1", userBirthMonth, userBirthYear)
+                        .setBirthdate(userBirthDay, userBirthMonth, userBirthYear)
                         .setUserSubjects(userSubject)
                         .setHobbies(userHobby)
-                        .uploadPicture("img/prot.jpg")
+                        .uploadPicture(userPicture)
                         .setCurrentAddress(userCurrentAddress)
                         .setUserState(userState)
                         .setUserCity(userCity)
@@ -47,10 +50,10 @@ public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
                         .verifyResults("Student Email", userEmail)
                         .verifyResults("Gender", userGender)
                         .verifyResults("Mobile", userPhone)
-                        .verifyResults("Date of Birth", "01" + " " + userBirthMonth + "," + userBirthYear)
+                        .verifyResults("Date of Birth", userBirthDay + " " + " " + userBirthMonth + "," + userBirthYear)
                         .verifyResults("Subjects", userSubject)
                         .verifyResults("Hobbies", userHobby)
-                        .verifyResults("Picture", "prot.jpg")
+                        .verifyResults("Picture", userPicture)
                         .verifyResults("Address", userCurrentAddress)
                         .verifyResults("State and City", userState + " " + userCity);
 
