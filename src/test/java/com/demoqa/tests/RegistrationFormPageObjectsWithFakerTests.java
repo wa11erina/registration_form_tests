@@ -1,7 +1,6 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
 import static com.demoqa.utils.RandomUtils.*;
