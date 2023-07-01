@@ -1,9 +1,8 @@
-package demoqa.tests;
+package com.demoqa.tests;
 
-import demoqa.pages.RegistrationPage;
+import com.demoqa.utils.RandomUtils;
+import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-
-import static demoqa.utils.RandomUtils.*;
 
 public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
@@ -15,17 +14,17 @@ public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
         String userFirstName = faker.name().firstName(),
                 userLastName = faker.name().lastName(),
                 userEmail = faker.internet().emailAddress(),
-                userGender = getRandomFakerGender(),
+                userGender = RandomUtils.getRandomFakerGender(),
                 userPhone = faker.phoneNumber().subscriberNumber(10),
-                userBirthMonth = getRandomFakerMonth(),
-                userBirthYear = String.valueOf(getRandomInt(1900, 2023)),
+                userBirthMonth = RandomUtils.getRandomFakerMonth(),
+                userBirthYear = String.valueOf(RandomUtils.getRandomInt(1900, 2023)),
                 userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
-                userSubject = getRandomFakerSubject(),
-                userHobby = getRandomFakerHobby(),
+                userSubject = RandomUtils.getRandomFakerSubject(),
+                userHobby = RandomUtils.getRandomFakerHobby(),
                 userPicture = "prot.jpg",
                 userCurrentAddress = faker.address().fullAddress(),
-                userState = getRandomFakerUserState(),
-                userCity = getRandomFakerUserCity(userState);
+                userState = RandomUtils.getRandomFakerUserState(),
+                userCity = RandomUtils.getRandomFakerUserCity(userState);
 
         // Filling out Registration Form
         registrationPage.openPage()

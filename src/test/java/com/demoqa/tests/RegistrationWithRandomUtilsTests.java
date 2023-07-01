@@ -1,19 +1,33 @@
-package demoqa.tests;
+package com.demoqa.tests;
 
+import com.demoqa.utils.RandomUtils;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static demoqa.tests.TestData.*;
 
 
-public class RegistrationWithTestDataTests extends TestBase{
+public class RegistrationWithRandomUtilsTests extends TestBase{
 
 
     @Test
     void successfulRegistrationTest() {
+
+        String firstName = RandomUtils.getRandomString(10),
+                lastName = RandomUtils.getRandomString(10),
+                userEmail = RandomUtils.getRandomEmail(),
+                userGender = RandomUtils.getRandomGender(),
+                userPhoneNumber = RandomUtils.getRandomSimplePhone(),
+                userBirthMonth = RandomUtils.getRandomMonth(),
+                userBirthYear = String.valueOf(RandomUtils.getRandomInt(1900, 2023)),
+                userSubject = RandomUtils.getRandomSubject(),
+                userHobby = RandomUtils.getRandomHobby(),
+                userCurrentAddress = RandomUtils.getRandomStringWithNumbersAndSpaces(30),
+                userState = RandomUtils.getRandomUserState(),
+                userCity = RandomUtils.getRandomUserCity(userState);
+
 
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -23,17 +37,15 @@ public class RegistrationWithTestDataTests extends TestBase{
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").$(byText(userGender1)).click();
+        $("#genterWrapper").$(byText(userGender)).click();
         $("#userNumber").setValue(userPhoneNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(userBirthMonth);
         $(".react-datepicker__year-select").selectOption(userBirthYear);
         $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
-        $("#subjectsInput").setValue(subjectFirstLetter);
         $("#subjectsInput").setValue(userSubject).pressEnter();
-        $("#hobbiesWrapper").$(byText(hobby2)).click();
-        $("#hobbiesWrapper").$(byText(hobby3)).click();
-        $("#uploadPicture").uploadFromClasspath(userImg);
+        $("#hobbiesWrapper").$(byText(userHobby)).click();
+        $("#uploadPicture").uploadFromClasspath("prot.jpg");
         $("#currentAddress").setValue(userCurrentAddress);
         $("#stateCity-wrapper").$("#state").click();
         $("#stateCity-wrapper").$(byText(userState)).click();
@@ -45,10 +57,10 @@ public class RegistrationWithTestDataTests extends TestBase{
         $(".modal-content").should(appear)
                 .shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(firstName + " " + lastName),
-                text(userEmail), text(userGender1), text(userPhoneNumber),
-                text(userBirthDay + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
-                text(hobby2 + "," + " " + hobby3), text(imgTitle),
+                text(userEmail), text(userGender), text(userPhoneNumber),
+                text("01" + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
+                text(userHobby), text("prot.jpg"),
                 text(userCurrentAddress), text(userState + " " + userCity));
 
+        }
     }
-}

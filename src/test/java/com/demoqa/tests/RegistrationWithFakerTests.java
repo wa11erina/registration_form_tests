@@ -1,32 +1,32 @@
-package demoqa.tests;
+package com.demoqa.tests;
 
+import com.demoqa.utils.RandomUtils;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static demoqa.utils.RandomUtils.*;
 
 
-public class RegistrationWithRandomUtilsTests extends TestBase{
+public class RegistrationWithFakerTests extends TestBase{
 
 
     @Test
     void successfulRegistrationTest() {
 
-        String firstName = getRandomString(10),
-                lastName = getRandomString(10),
-                userEmail = getRandomEmail(),
-                userGender = getRandomGender(),
-                userPhoneNumber = getRandomSimplePhone(),
-                userBirthMonth = getRandomMonth(),
-                userBirthYear = String.valueOf(getRandomInt(1900, 2023)),
-                userSubject = getRandomSubject(),
-                userHobby = getRandomHobby(),
-                userCurrentAddress = getRandomStringWithNumbersAndSpaces(30),
-                userState = getRandomUserState(),
-                userCity = getRandomUserCity(userState);
+        String userFirstName = RandomUtils.getRandomFakerFirstName(),
+                userLastName = RandomUtils.getRandomFakerLastName(),
+                userEmail = RandomUtils.getRandomFakerEmail(),
+                userGender = RandomUtils.getRandomGender(),
+                userPhoneNumber = RandomUtils.getRandomFakerPhone(),
+                userBirthMonth = RandomUtils.getRandomMonth(),
+                userBirthYear = String.valueOf(RandomUtils.getRandomInt(1900, 2023)),
+                userSubject = RandomUtils.getRandomSubject(),
+                userHobby = RandomUtils.getRandomHobby(),
+                userCurrentAddress = RandomUtils.getRandomFakerAddress(),
+                userState = RandomUtils.getRandomUserState(),
+                userCity = RandomUtils.getRandomUserCity(userState);
 
 
         open("https://demoqa.com/automation-practice-form");
@@ -34,8 +34,8 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
+        $("#firstName").setValue(userFirstName);
+        $("#lastName").setValue(userLastName);
         $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText(userGender)).click();
         $("#userNumber").setValue(userPhoneNumber);
@@ -56,11 +56,11 @@ public class RegistrationWithRandomUtilsTests extends TestBase{
 
         $(".modal-content").should(appear)
                 .shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(firstName + " " + lastName),
+        $(".table-responsive").shouldHave(text(userFirstName + " " + userLastName),
                 text(userEmail), text(userGender), text(userPhoneNumber),
                 text("01" + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
                 text(userHobby), text("prot.jpg"),
                 text(userCurrentAddress), text(userState + " " + userCity));
 
-        }
     }
+}
