@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package demoqa.tests;
 
 import org.junit.jupiter.api.Test;
 

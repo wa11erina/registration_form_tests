@@ -1,6 +1,6 @@
-package com.demoqa.tests;
+package demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
+import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationFormPageObjectsTests extends TestBase {

@@ -1,8 +1,8 @@
-package com.demoqa.pages;
+package demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.pages.components.CalendarComponent;
-import com.demoqa.pages.components.VerifyResultsComponent;
+import demoqa.pages.components.CalendarComponent;
+import demoqa.pages.components.VerifyResultsComponent;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;

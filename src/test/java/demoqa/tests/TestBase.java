@@ -1,7 +1,7 @@
-package com.demoqa.tests;
+package demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
-import com.demoqa.pages.RegistrationPage;
+import demoqa.pages.RegistrationPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 

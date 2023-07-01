@@ -1,9 +1,9 @@
-package com.demoqa.tests;
+package demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
+import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-import static com.demoqa.utils.RandomUtils.*;
+import static demoqa.utils.RandomUtils.*;
 
 public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();

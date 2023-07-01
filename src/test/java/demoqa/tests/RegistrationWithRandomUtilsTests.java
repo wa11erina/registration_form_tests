@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package demoqa.tests;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,25 +6,25 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.demoqa.utils.RandomUtils.*;
+import static demoqa.utils.RandomUtils.*;
 
 
-public class RegistrationWithFakerTests extends TestBase{
+public class RegistrationWithRandomUtilsTests extends TestBase{
 
 
     @Test
     void successfulRegistrationTest() {
 
-        String userFirstName = getRandomFakerFirstName(),
-                userLastName = getRandomFakerLastName(),
-                userEmail = getRandomFakerEmail(),
+        String firstName = getRandomString(10),
+                lastName = getRandomString(10),
+                userEmail = getRandomEmail(),
                 userGender = getRandomGender(),
-                userPhoneNumber = getRandomFakerPhone(),
+                userPhoneNumber = getRandomSimplePhone(),
                 userBirthMonth = getRandomMonth(),
                 userBirthYear = String.valueOf(getRandomInt(1900, 2023)),
                 userSubject = getRandomSubject(),
                 userHobby = getRandomHobby(),
-                userCurrentAddress = getRandomFakerAddress(),
+                userCurrentAddress = getRandomStringWithNumbersAndSpaces(30),
                 userState = getRandomUserState(),
                 userCity = getRandomUserCity(userState);
 
@@ -34,8 +34,8 @@ public class RegistrationWithFakerTests extends TestBase{
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
-        $("#firstName").setValue(userFirstName);
-        $("#lastName").setValue(userLastName);
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText(userGender)).click();
         $("#userNumber").setValue(userPhoneNumber);
@@ -56,11 +56,11 @@ public class RegistrationWithFakerTests extends TestBase{
 
         $(".modal-content").should(appear)
                 .shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userFirstName + " " + userLastName),
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName),
                 text(userEmail), text(userGender), text(userPhoneNumber),
                 text("01" + " " + userBirthMonth + "," + userBirthYear), text(userSubject),
                 text(userHobby), text("prot.jpg"),
                 text(userCurrentAddress), text(userState + " " + userCity));
 
+        }
     }
-}
