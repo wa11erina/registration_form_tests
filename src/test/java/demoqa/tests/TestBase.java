@@ -14,6 +14,7 @@ public class TestBase {
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
+        Configuration.holdBrowserOpen = true;
 
     }
 }
