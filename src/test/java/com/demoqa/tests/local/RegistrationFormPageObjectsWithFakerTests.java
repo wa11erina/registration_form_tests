@@ -1,16 +1,17 @@
-package com.demoqa.tests;
+package com.demoqa.tests.local;
 
+import com.demoqa.tests.local.TestBase;
 import com.demoqa.utils.RandomUtils;
 import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
+public class RegistrationFormPageObjectsWithFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     
     @Test
     void successfulRegistrationTest() {
 
-        // Test data
+        // Faker test data
         String userFirstName = faker.name().firstName(),
                 userLastName = faker.name().lastName(),
                 userEmail = faker.internet().emailAddress(),
@@ -56,5 +57,4 @@ public class RegistrationFormPageObjectsWithFakerTests extends TestBase{
                         .verifyResults("State and City", userState + " " + userCity);
 
     }
-
 }

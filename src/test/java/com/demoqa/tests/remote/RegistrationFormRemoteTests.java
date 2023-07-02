@@ -1,8 +1,9 @@
-package com.demoqa.tests;
+package com.demoqa.tests.remote;
 
+import org.junit.jupiter.api.Test;
+import com.demoqa.tests.remote.RemoteTestBase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -24,26 +25,26 @@ public class RegistrationFormRemoteTests extends RemoteTestBase {
             executeJavaScript("$('footer').remove()");
         });
         step ("Fill out the form", () -> {
-                    $("#firstName").setValue("Robert");
-                    $("#lastName").setValue("Porter");
-                    $("#userEmail").setValue("prot@kpax.com");
-                    $("#genterWrapper").$(byText("Male")).click();
-                    $("#userNumber").setValue("1234567890");
-                    $("#dateOfBirthInput").click();
-                    $(".react-datepicker__month-select").selectOption("June");
-                    $(".react-datepicker__year-select").selectOption("1987");
-                    $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
-                    $("#subjectsInput").setValue("c");
-                    $("#subjectsInput").setValue("Computer Science").pressEnter();
-                    $("#hobbiesWrapper").$(byText("Reading")).click();
-                    $("#hobbiesWrapper").$(byText("Music")).click();
-                    $("#uploadPicture").uploadFromClasspath("prot.jpg");
-                    $("#currentAddress").setValue("K-PAX, Lyra constellation");
-                    $("#stateCity-wrapper").$("#state").click();
-                    $("#stateCity-wrapper").$(byText("NCR")).click();
-                    $("#stateCity-wrapper").$("#city").click();
-                    $("#stateCity-wrapper").$(byText("Delhi")).click();
-                    $("#submit").click();
+            $("#firstName").setValue("Robert");
+            $("#lastName").setValue("Porter");
+            $("#userEmail").setValue("prot@kpax.com");
+            $("#genterWrapper").$(byText("Male")).click();
+            $("#userNumber").setValue("1234567890");
+            $("#dateOfBirthInput").click();
+            $(".react-datepicker__month-select").selectOption("June");
+            $(".react-datepicker__year-select").selectOption("1987");
+            $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
+            $("#subjectsInput").setValue("c");
+            $("#subjectsInput").setValue("Computer Science").pressEnter();
+            $("#hobbiesWrapper").$(byText("Reading")).click();
+            $("#hobbiesWrapper").$(byText("Music")).click();
+            $("#uploadPicture").uploadFromClasspath("prot.jpg");
+            $("#currentAddress").setValue("K-PAX, Lyra constellation");
+            $("#stateCity-wrapper").$("#state").click();
+            $("#stateCity-wrapper").$(byText("NCR")).click();
+            $("#stateCity-wrapper").$("#city").click();
+            $("#stateCity-wrapper").$(byText("Delhi")).click();
+            $("#submit").click();
         });
         step ("Verify results", () -> {
             $(".modal-content").should(appear)

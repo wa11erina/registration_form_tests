@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package com.demoqa.tests.local;
 
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationPage;
@@ -14,7 +14,5 @@ public class TestBase {
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-
     }
 }

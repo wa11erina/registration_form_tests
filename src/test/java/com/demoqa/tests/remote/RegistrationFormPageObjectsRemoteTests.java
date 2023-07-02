@@ -1,12 +1,17 @@
-package com.demoqa.tests;
+package com.demoqa.tests.remote;
 
 import com.demoqa.pages.RegistrationPage;
+import com.demoqa.tests.remote.RemoteTestBase;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class RegistrationFormPageObjectsTests extends TestBase {
+public class RegistrationFormPageObjectsRemoteTests extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+    @Tag("remote")
+    @DisplayName("Successful registration with POM method")
     void successfulRegistrationTest() {
 
         // Filling out Registration Form
@@ -38,7 +43,6 @@ public class RegistrationFormPageObjectsTests extends TestBase {
                 .verifyResults("Picture", "prot.jpg")
                 .verifyResults("Address", "K-PAX, Lyra constellation")
                 .verifyResults("State and City", "NCR Delhi");
-
     }
 
 }
