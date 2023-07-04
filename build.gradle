@@ -7,7 +7,10 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.21.0"
+def selenideVersion = "6.13.0",
+    allureVersion = "2.21.0",
+    jUnitVersion = "5.9.3",
+    slf4jVersion = "2.0.7"
 
 allure {
     report {
@@ -33,6 +36,18 @@ dependencies {
 
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 compileJava {
     options.encoding = 'UTF-8'
 }
@@ -54,5 +69,10 @@ task simple_test(type: Test) {
 task remote_test(type: Test) {
     useJUnitPlatform{
         includeTags("remote")
+    }
+    task property_test(type: Test) {
+        useJUnitPlatform{
+            includeTags("property")
+        }
     }
 }
