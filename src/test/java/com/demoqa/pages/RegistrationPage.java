@@ -6,6 +6,7 @@ import com.demoqa.pages.components.VerifyResultsComponent;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -31,7 +32,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage openPage() {
-        open("/automation-practice-form");
+        open(baseUrl + "/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         return this;

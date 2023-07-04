@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Tag;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -20,7 +21,7 @@ public class RegistrationFormRemoteTests extends RemoteTestBase {
     void successfulRegistrationTest() {
 
         step ("Open demoqa Registration Form page", () -> {
-            open("/automation-practice-form");
+            open(baseUrl + "/automation-practice-form");
             $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");

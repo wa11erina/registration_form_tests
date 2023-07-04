@@ -48,7 +48,7 @@ public class SystemPropertiesTests {
     @Test
     @Tag("get_property")
     void getProperty(){
-        System.out.println(System.getProperty("url"));
+        System.out.println(System.getProperty("baseUrl"));
         System.out.println(System.getProperty("remoteUrl"));
         System.out.println(System.getProperty("browser"));
         System.out.println(System.getProperty("screenResolution"));
