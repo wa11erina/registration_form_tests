@@ -56,10 +56,6 @@ compileTestJava {
 }
 
 
-test {
-    useJUnitPlatform()
-}
-
 task simple_test(type: Test) {
     useJUnitPlatform{
         includeTags("simple")
@@ -67,12 +63,19 @@ task simple_test(type: Test) {
 }
 
 task remote_test(type: Test) {
-    useJUnitPlatform{
+    useJUnitPlatform {
         includeTags("remote")
     }
-    task property_test(type: Test) {
+}
+
+task property_test(type: Test) {
         useJUnitPlatform{
             includeTags("property")
         }
+    }
+
+task get_property(type: Test) {
+    useJUnitPlatform {
+        includeTags("get_property")
     }
 }

@@ -24,8 +24,11 @@ public class RemoteTestBase {
     @BeforeAll
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browserSize = System.getProperty("screenResolution","1920x1080");
+        Configuration.baseUrl = System.getProperty("url","https://demoqa.com/automation-practice-form");
+        Configuration.remote = System.getProperty("remoteUrl");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "105.0");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

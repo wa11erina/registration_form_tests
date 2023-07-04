@@ -15,6 +15,7 @@ public class RegistrationFormRemoteTests extends RemoteTestBase {
 
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration")
     void successfulRegistrationTest() {
 

@@ -34,7 +34,7 @@ public class SystemPropertiesTests {
         System.out.println(browser); // chrome
     }
     @Test
-    @Tag("property")
+    @Tag("property_test")
     void systemProperties4Test() {
         String browser = System.getProperty("browser", "mozilla");
 
@@ -45,5 +45,13 @@ public class SystemPropertiesTests {
         // gradle property_test -Dbrowser=opera
         // opera
 
+    }
+    @Test
+    @Tag("get_property")
+    void getProperty(){
+        System.out.println(System.getProperty("url"));
+        System.out.println(System.getProperty("remoteUrl"));
+        System.out.println(System.getProperty("browser"));
+        System.out.println(System.getProperty("screenResolution"));
     }
 }
