@@ -20,7 +20,7 @@ public class RegistrationFormRemoteTests extends RemoteTestBase {
     void successfulRegistrationTest() {
 
         step ("Open demoqa Registration Form page", () -> {
-            open("https://demoqa.com/automation-practice-form");
+            open("/automation-practice-form");
             $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
