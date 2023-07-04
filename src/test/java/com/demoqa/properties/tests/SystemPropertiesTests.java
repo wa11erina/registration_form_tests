@@ -34,7 +34,6 @@ public class SystemPropertiesTests {
         System.out.println(browser); // chrome
     }
     @Test
-    @Tag("property_test")
     void systemProperties4Test() {
         String browser = System.getProperty("browser", "mozilla");
 
