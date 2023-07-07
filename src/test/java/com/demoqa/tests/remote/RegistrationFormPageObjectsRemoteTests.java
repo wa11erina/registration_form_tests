@@ -11,6 +11,7 @@ public class RegistrationFormPageObjectsRemoteTests extends RemoteTestBase {
 
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration with POM method")
     void successfulRegistrationTest() {
 

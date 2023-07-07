@@ -17,6 +17,7 @@ public class RegistrationWithRandomUtilsRemoteTests extends RemoteTestBase {
 
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration with random test data")
     void successfulRegistrationTest() {
 

@@ -12,6 +12,7 @@ public class RegistrationFormPageObjectsWithFakerRemoteTests extends RemoteTestB
     
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration with POM method and faker test data")
     void successfulRegistrationTest() {
 

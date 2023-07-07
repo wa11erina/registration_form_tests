@@ -16,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationWithFakerRemoteTests extends RemoteTestBase {
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration with faker test data")
     void successfulRegistrationTest() {
 

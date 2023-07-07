@@ -17,6 +17,7 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationWithTestDataRemoteTests extends RemoteTestBase {
     @Test
     @Tag("remote")
+    @Tag("property")
     @DisplayName("Successful registration with test data from file")
     void successfulRegistrationTest() {
 
